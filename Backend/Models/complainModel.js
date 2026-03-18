@@ -30,14 +30,13 @@ const complaintSchema = new mongoose.Schema({
       enum: ["Point"],
       default: "Point"
     },
-
     coordinates: {
       type: [Number]   // [longitude, latitude]
     }
   },
 
   imageUrl: {
-    type: String
+    type: String,
   },
 
   status: {

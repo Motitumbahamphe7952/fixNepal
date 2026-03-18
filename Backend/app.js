@@ -3,14 +3,19 @@ require('dotenv').config();
 const express = require("express");
 const cors = require('cors');
 const app = express();
+const cookieParser = require('cookie-parser');
+app.use(cookieParser());
 
 const authRoutes = require('./Routes/authRoutes');
+const complaintRoutes = require('./Routes/complaintRoutes');
 
 
 const ConnnectDB = require('./Config/dbConfig');
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended:true }));
+
+
 app.use(cors());
 
 // Auth Api
@@ -20,7 +25,7 @@ app.get('/', (req, res) => {
 
  
 app.use('/api/auth', authRoutes);
-// app.use("/api/complaint",)
+app.use("/api/complaint",complaintRoutes)
 
 
 
