@@ -5,14 +5,16 @@ const client = new ImageKit({
   privateKey: "private_puWMplLt6kAnIf4sxO3H8uiAoO8=",
 });
 
-module.exports.generateFileUrl = async (buffer) => {
+module.exports.generateFileUrl = async (file,filename) => {
   try {
-   const url = await client.files.upload({
-      file: await toFile(Buffer.from(buffer), "file"),
-      fileName: `complaint_${new Date().toLocaleDateString("en-GB")}.jpg`,
-      folder:"/complaints"
-    });
-    return url;
+  
+
+ const response = await client.files.upload({
+    file:file,
+    fileName:filename,
+    folder:"complaint_images"
+ })
+  return response;
 
   } catch (error) {
     console.error("Error generating file URL:", error.message);

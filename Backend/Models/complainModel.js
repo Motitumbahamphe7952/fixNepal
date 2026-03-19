@@ -34,6 +34,16 @@ const complaintSchema = new mongoose.Schema({
       type: [Number]   // [longitude, latitude]
     }
   },
+  votes:[
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref:"User",
+    }
+  ],
+  voteCount:{
+    type:Number,
+    default:0
+  },
 
   imageUrl: {
     type: String,
