@@ -16,7 +16,7 @@ const NavBar = ({ className }: classProp) => {
 
   return (
     <nav
-      className={`w-full border-b-2 py-4 flex justify-between items-center z-50 relative px-8 ${className}`}
+      className={`w-full py-4 flex justify-between items-center z-50 relative px-8 ${className}`}
     >
       <FlexRow className="flex items-center gap-4">
         <NavLink to="/" className="text-2xl font-bold tracking-tighter">
@@ -49,7 +49,7 @@ const NavBar = ({ className }: classProp) => {
       </FlexRow>
 
       <FlexRow className="flex items-center gap-6 font-medium text-sm">
-        <NavLink to="/signup" className="hover:opacity-70 transition-opacity">
+        <NavLink to="/register" className="hover:opacity-70 transition-opacity">
           New Account
         </NavLink>
         <NavLink

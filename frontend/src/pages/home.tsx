@@ -1,10 +1,9 @@
-import Hero from "@/components/section/hero"
+import { Globe } from "@/components/section/globe"
 
 const Home = () => {
   return (
     <>
-    <Hero />
-    <Hero />
+    <Globe />
     </>
   )
 }

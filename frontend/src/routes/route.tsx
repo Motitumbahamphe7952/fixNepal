@@ -16,8 +16,8 @@ export const router = createBrowserRouter(
         <Route path="/job/:id" element={<Hero />} />
       </Route>
 
-      <Route element={<Layout showNavbar={true} showFooter={true} />}>
-        <Route path="/register" element={<LoginCard />} />
+      <Route element={<Layout showNavbar={true} showFooter={false} />}>
+        <Route path="/login" element={<LoginCard />} />
         <Route path="*" element={<Home />} />
       </Route>
     </>,
