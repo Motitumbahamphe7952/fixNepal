@@ -121,7 +121,6 @@ interface MarkerProps {
 function Marker({
   marker,
   radius,
-  defaultSize,
   onClick,
   onHover,
 }: MarkerProps) {
