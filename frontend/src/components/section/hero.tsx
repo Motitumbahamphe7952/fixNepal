@@ -1,5 +1,7 @@
+import Section from "@/components/common/Section";
+
 const Hero = () => {
-  return <div>Hero</div>;
+  return <Section className="h">Hero</Section>;
 };
 
 export default Hero;

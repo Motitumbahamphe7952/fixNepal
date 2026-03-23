@@ -12,6 +12,10 @@ const complaintRoutes = require('./Routes/complaintRoutes');
 
 const ConnnectDB = require('./Config/dbConfig');
 
+const authRoutes = require("./Routes/authRoutes");
+
+const ConnnectDB = require("./Config/dbConfig");
+
 app.use(express.json());
 app.use(express.urlencoded({ extended:true }));
 
@@ -28,10 +32,8 @@ app.use('/api/auth', authRoutes);
 app.use("/api/complaint",complaintRoutes)
 // app.use("/api/department", departmentRoutes)
 
-
-
-
-
+app.use("/api/auth", authRoutes);
+// app.use("/api/complaint",)
 
 const port = 3000;
 app.listen(port, () => {
