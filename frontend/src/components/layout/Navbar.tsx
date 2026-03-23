@@ -1,7 +1,7 @@
-const Navbar = () => {
-  return (
-    <div>Navbar</div>
-  )
-}
+import type { classProp } from "@/types/interface";
 
-export default Navbar
+const Navbar = ({ className }: classProp) => {
+  return <div className={className}>Navbar</div>;
+};
+
+export default Navbar;

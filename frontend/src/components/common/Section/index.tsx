@@ -14,10 +14,7 @@ export default function Section({
 }: ISectionProps) {
   return (
     <section
-      className={cn(
-        "w-full px-5 md:px-20", 
-        className,
-      )}
+      className={cn("w-full min-h-[calc(100vh-50px)]", className)}
       {...rest}
     >
       <div className={cn(container ? "max-w-7xl mx-auto" : "")}>{children}</div>
