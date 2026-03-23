@@ -7,11 +7,11 @@ import type { layoutprops } from "@/types/interface";
 const Layout = ({ showNavbar = true, showFooter = true }: layoutprops) => {
   return (
     <div className="container">
-      {showNavbar && <Navbar className="h" />}
+      {showNavbar && <Navbar />}
       <main className="flex-1 overflow-auto">
         <Outlet />
       </main>
-      {showFooter && <Footer className="h" />}
+      {showFooter && <Footer />}
     </div>
   );
 };
