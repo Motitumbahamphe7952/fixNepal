@@ -15,8 +15,7 @@ const { isAuthorized } = require("../Middlewares/isAuthorized");
 const upload = require("../Config/multerConfig");
 
 // Create a new complaint
-router.post(
-  "/create",
+router.post( "/create",
   isAuthenticated,
   upload.single("image"),
   createComplaint,
@@ -25,8 +24,8 @@ router.get("/allcomplaints", getAllComplaints);
 router.get("/mycomplaints", isAuthenticated, getMyComplaints);
 router.get("/:id", getComplaintById);
 
-router.put("/:id/status", isAuthenticated, isAuthorized, updateComplaintStatus);
-router.delete("/:id/delete", isAuthenticated, deleteComplaint);
+router.put("/:id/status", isAuthenticated, isAuthorized("admin", "department"), updateComplaintStatus);
+router.delete("/:id/delete", isAuthenticated, isAuthorized("admin", "department"), deleteComplaint);
 
 router.post("/:id/vote", isAuthenticated,toogleVote);
 

@@ -5,7 +5,6 @@ const complaintSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-
   description: {
     type: String
   },
@@ -65,6 +64,10 @@ const complaintSchema = new mongoose.Schema({
     type: String,
     enum: ["low", "medium", "high"],
     default: "medium"
+  },
+  department:{
+    type:mongoose.Schema.Types.ObjectId,
+    ref:"Department"
   },
 
   reportedBy: {
