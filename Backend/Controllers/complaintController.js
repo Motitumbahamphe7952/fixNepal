@@ -1,6 +1,7 @@
 const { generateFileUrl } = require("../Config/imagekitConfig");
 const complaintModel = require("../Models/complainModel");
 const { v4: uuid } = require("uuid");
+const departmentModel = require("../Models/departmentModel");
 
 module.exports.createComplaint = async (req, res) => {
   try {
@@ -10,10 +11,10 @@ module.exports.createComplaint = async (req, res) => {
 
     const { title, description, category, longitude, latitude } = req.body;
 
-    if (!title || !category) {
+    if (!title || !category || !longitude || !latitude || !description) {
       return res
         .status(400)
-        .json({ message: "Title, category, and location are required" });
+        .json({ message: "Title, category, description, and location are required" });
     }
     const buffer = Buffer.from(image.buffer);
     const base64ImageFile = buffer.toString("base64");
@@ -31,11 +32,23 @@ module.exports.createComplaint = async (req, res) => {
 
       imageUrl: fileUrl.url,
       reportedBy: userId,
-    });
+    })
+    const department = await departmentModel.findOne({
+      categories: { $in: [category] }
+    }).populate("complaints");
 
+   if(!department){
+    return res.status(404).json({ message: "No department found for this category" });
+   }
+    newComplaint.department = department._id;
+   await newComplaint.save();
+   await department.complaints.push(newComplaint._id);
+   await department.save();
+   const complaints = await complaintModel.findOne({_id:newComplaint._id}).populate("department")
     res.status(201).json({
       message: "Complaint created successfully",
-      complaint: newComplaint,
+      complaint: complaints,
+      department: department.name
     });
   } catch (error) {
     res.status(500).json({ message: error.message });

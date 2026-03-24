@@ -8,6 +8,7 @@ app.use(cookieParser());
 
 const authRoutes = require('./Routes/authRoutes');
 const complaintRoutes = require('./Routes/complaintRoutes');
+const departmentRoutes = require("./Routes/departmentRoutes");
 
 
 const ConnnectDB = require('./Config/dbConfig');
@@ -26,9 +27,11 @@ app.get('/', (req, res) => {
  
 app.use('/api/auth', authRoutes);
 app.use("/api/complaint",complaintRoutes)
-// app.use("/api/department", departmentRoutes)
+
+// app.use("/api/admin",adminRoutes)
 
 
+app.use("/api/departments",departmentRoutes)
 
 
 
