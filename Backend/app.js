@@ -13,6 +13,10 @@ const departmentRoutes = require("./Routes/departmentRoutes");
 
 const ConnnectDB = require('./Config/dbConfig');
 
+const authRoutes = require("./Routes/authRoutes");
+
+const ConnnectDB = require("./Config/dbConfig");
+
 app.use(express.json());
 app.use(express.urlencoded({ extended:true }));
 
